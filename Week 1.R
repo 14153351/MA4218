@@ -45,3 +45,31 @@ mtcars %>% select(2:4, everything())
 mtcars %>% mutate(sqrtMPG= sqrt(qsec))
 mtcars %>% mutate(sqrtQSEC= sqrt(qsec))
 mtcars %>% mutate(sqrtMPG= sqrt(mpg), logMPG=log(mpg))%>% select(mpg, sqrtMPG, logMPG, everything())
+
+install.packages("modelr")
+install.packages("randomForest")
+install.packages("ggplot2")
+
+library(readr)
+library(modelr)
+library(randomForest)
+library(ggplot2)%>% 
+
+data(diamonds)
+diamonds %>%dim()
+diamonds %>% names()
+diamtrain <- diamnonds %>% sample_frac(0.30)
+diamtest <- diamonds %>% sample_frac(0.10)
+diamtrain %>% dim()
+diamtest %>% dim()
+
+#Predictive Mode
+#predictive model
+pricemodel <- lm(price ~ . , data=diamtrain) 
+pricemodel
+rmse(pricemodel,diamtrain)
+rmse(pricemodel,diamtest)
+mae(pricemodel,diamtrain)
+mae(pricemodel,diamtest)
+rsquare(pricemodel,diamtrain)
+rsquare(pricemodel,diamtest)
