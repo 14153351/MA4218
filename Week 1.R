@@ -44,5 +44,4 @@ mtcars %>% s3elect(cyl:drat)
 mtcars %>% select(2:4, everything())
 mtcars %>% mutate(sqrtMPG= sqrt(qsec))
 mtcars %>% mutate(sqrtQSEC= sqrt(qsec))
-mtcars %>% mutate(sqrtMPG= sqrt(mpg), logMPG=log(mpg)%>% 
-select(mpg, sqrtMPG, logMPG, everything()))
+mtcars %>% mutate(sqrtMPG= sqrt(mpg), logMPG=log(mpg))%>% select(mpg, sqrtMPG, logMPG, everything())
